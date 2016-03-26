@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+ <html lang="en">
+	<head>
+	    <title>my first app </title>
+	</head>
+	<style>
+		table,td{ border:1px solid pink;}
+		.red{
+			color:red;
+			}
+		.blue{
+			color:blue;}
+		.green{
+			color:green;}
+		#bt{
+			color:purple;}
+		</style>
+	<body>
+		<form id="form">
+		<div class="red">
+		<lable class="red">name:</lable> 
+		<input type="text" required placeholder="enter the name" class="blue" id="name"></input><br>
+		<lable>email:</lable> 
+		<input type="email" required placeholder="enter the email id" id="email" class="blue"></input><br>
+		<lable>age:</lable> 
+		<input type="number" required placeholder="enter your age" id="age" class="blue"></input><br>
+		<button type="button" id="bt" onclick="add()">add to table</button>
+		</div></form>
+	</body>
+	<table id="table">
+	<thead>
+		<tr>
+			<td class="green">name</td>
+			<td class="green">email</td>
+			<td class="green">age</td>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+	</table>
+	<script>
+		 function add(){ 
+			var name=
+			document.getElementById("name").value;
+			var email=
+			document.getElementById("email").value;
+			var age=
+			document.getElementById("age").value;
+			if(name!=''&&email!=''&&age!='')
+		{
+			var emailr=
+				/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+				if(email.match(emailr))
+				{
+				var ager=/^[0-9]+$/;
+					if(age.match(ager))
+					{
+				
+			var table=
+				document.getElementById("table");
+			var row=
+				document.createElement('tr');
+			var cell1=document.createElement('td');	
+			var cell2=document.createElement('td');
+			var cell3=document.createElement('td');
+			
+			cell1.innerHTML=name;
+			cell2.innerHTML=email;
+			cell3.innerHTML=age;
+			row.appendChild(cell1);	
+			row.appendChild(cell2);
+			row.appendChild(cell3);	
+			table.children[0].appendChild(row);
+			document.getElementById("form").reset();
+				}
+			}
+		}
+			else if(age=='')
+				alert("age field is empty");
+			else if(email=='')
+				alert("email field is empty");
+			
+	
+                else{
+			alert("invalid");}
+		}
+		</script>
+</html>
